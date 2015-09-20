@@ -1,0 +1,38 @@
+<head>
+  <title>meteor-animate-test</title>
+  <style>
+    h1 { height: 400px; width: 200px; background: orange }
+    h2 { height: 400px; width: 200px; background: yellow }
+  </style>
+</head>
+
+<template name="layout">
+  <ul>
+    <li><a href="/one">View 1</a></li>
+    <li><a href="/two">View 2</a></li>
+  </ul>
+  <p>
+    Transitions used: in="zoomIn" out="bounceOut"
+  </p>
+
+  <p>
+    Static animations used: one="jello" two="swing". Both with delay of 2000
+  </p>
+
+
+  {{#transition wrap="true" in="zoomIn" out="bounceOut"}}
+    {{> Template.dynamic template=content}}
+  {{/transition}}
+</template>
+
+<template name="one">
+  {{#animate type="jello" name="one"}}
+    <h1>One</h1>
+  {{/animate}}
+</template>
+
+<template name="two">
+  {{#animate type="swing" delay="2000"}}
+    <h2>Two</h2>
+  {{/animate}}
+</template>
